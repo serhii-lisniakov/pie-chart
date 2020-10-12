@@ -3,17 +3,17 @@ const initialState = {
         {
             name: 'milk',
             value: 150,
-            id: Date.now()
+            id: 1
         },
         {
             name: 'beer',
             value: 120.90,
-            id: Date.now()
+            id: 2
         },
         {
             name: 'chips',
             value: 100,
-            id: Date.now()
+            id: 3
         },
     ]
 }
