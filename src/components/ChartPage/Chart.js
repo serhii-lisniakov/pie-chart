@@ -16,9 +16,15 @@ const Pie = styled.svg`
         stroke-width: ${strokeWidth}; 
         cursor: pointer;
         transition: .2s;
+        transform-origin: 50% 50%;
         &:hover {
-            stroke-width: ${strokeWidth === 30 ? 30 : strokeWidth + 2};
+            stroke-width: ${strokeWidth === 30 ? 30 : strokeWidth + 1};
+            transform: scale(1.1);
         }
+        animation: fillup .8s ease-out forwards;
+    }
+    @keyframes fillup {
+        from { stroke-dasharray: 0 100; }
     }
     @media (max-width: 475px) {
         width: 44vh;
