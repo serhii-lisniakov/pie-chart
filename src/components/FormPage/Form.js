@@ -20,6 +20,17 @@ const FormWrapper = styled.form`
         text-transform: uppercase;
         letter-spacing: 2px;
         font-size: 13px;
+        position: relative;
+        & p {
+            position: absolute;
+            margin: 0;
+            color: red;
+            text-transform: none;
+            letter-spacing: 0;
+            right: 5px;
+            font-size: 10px;
+            top: 4px;
+        }
     }
     @media (max-width: 1024px) {
         width: 100%;
@@ -44,6 +55,10 @@ const Input = styled.input`
     font-size: 20px;
     border-radius: 5px;
     padding: 0 20px;
+    &::placeholder {
+        color: #ffffff40;
+        font-size: 14px;
+    }
     &::-webkit-outer-spin-button, ::-webkit-inner-spin-button {
         -webkit-appearance: none;
     }
@@ -90,11 +105,18 @@ const AddBtn = styled.button`
 const Form = () => {
     const [name, setName] = useState('')
     const [value, setValue] = useState('')
+    const [ifEmpty, setIfEmpty] = useState(false)
     const dispatch = useDispatch()
 
     const addItem = (e) => {
         e.preventDefault()
-        if (name.trim().length === 0) return
+
+        if (name.trim().length === 0 || value === 0 || value === '') {
+            setIfEmpty(prev => !prev)
+            setValue('')
+            setTimeout(() => setIfEmpty(prev => !prev), 2000)
+            return
+        }
 
         const newItem = {
             name,
@@ -113,11 +135,24 @@ const Form = () => {
             <FormWrapper onSubmit={addItem}>
                 <label>
                     Item
-                    <Input type="text" value={name} onChange={e => setName(e.target.value)} />
+                    <Input 
+                        type="text" 
+                        value={name} 
+                        onChange={e => setName(e.target.value)} 
+                        placeholder='Enter the name of item'
+                    />
+                    {ifEmpty && <p>Must be no-empty</p>}
                 </label>
                 <label>
                     Value
-                    <Input type="number" value={value} onChange={e => setValue(+e.target.value)} />
+                    <Input 
+                        type="number" 
+                        value={value} 
+                        step='any' 
+                        onChange={e => setValue(+e.target.value)}
+                        placeholder='123,4'
+                    />
+                    {ifEmpty && <p>Must be &gt; 0</p>}
                 </label>
                 <AddBtn type='submit'>ADD</AddBtn>
             </FormWrapper>
