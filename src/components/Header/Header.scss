@@ -1,0 +1,28 @@
+.header {
+    display: flex;
+    justify-content: center;
+    &-link {
+        width: calc(50%);
+        text-align: center;
+        box-sizing: border-box;
+        font-size: 20px;
+        text-transform: uppercase;
+        text-decoration: none;
+        letter-spacing: 3px;
+        padding: 10px 15px;
+        color: rgb(255, 255, 255);
+        text-shadow: 0 0 10px #fff;
+        transition: .3s;
+        background: #1822467a;
+        &:first-child {
+            border-top-left-radius: 10px;
+        }
+        &:last-child {
+            border-top-right-radius: 10px;
+        }
+        &_active {
+            background: #182246;
+            transition: .3s;
+        }
+    }
+}
