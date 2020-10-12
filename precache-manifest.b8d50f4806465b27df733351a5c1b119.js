@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9e71cf60b9792500c391ebe7d606ef60",
+    "revision": "fa50062a779563b688af1d4f709f0011",
     "url": "/pie-chart/index.html"
   },
   {
