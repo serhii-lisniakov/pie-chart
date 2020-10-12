@@ -10,8 +10,8 @@ function App() {
         <Router basename={'/pie-chart'}>
         <Header/>
           <Route exact path="/" render={() => <Redirect to="/home"/>}/>
-          <Route path={'/home'} render={() => <FormPage />} />
-          <Route path={'/chart'} render={() => <ChartPage />} />
+          <Route path={'/home'} component={FormPage}/>
+          <Route path={'/chart'} component={ChartPage}/>
         </Router>
       </div>
   );
